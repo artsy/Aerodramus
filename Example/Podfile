@@ -1,5 +1,12 @@
 source 'https://github.com/CocoaPods/Specs.git'
 use_frameworks!
+platform :ios, '8.0'
+
+plugin 'cocoapods-keys', {
+    :project => "Aerodramus",
+    :target => "Aerodramus_Example",
+    :keys => ["EchoKey"]
+}
 
 target 'Aerodramus_Example', :exclusive => true do
   pod "Aerodramus", :path => "../"

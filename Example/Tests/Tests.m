@@ -1,31 +1,4 @@
-//
-//  AerodramusTests.m
-//  AerodramusTests
-//
-//  Created by Orta Therox on 07/09/2015.
-//  Copyright (c) 2015 Orta Therox. All rights reserved.
-//
-
-// https://github.com/Specta/Specta
-
 SpecBegin(InitialSpecs)
-
-describe(@"these will fail", ^{
-
-    it(@"can do maths", ^{
-        expect(1).to.equal(2);
-    });
-
-    it(@"can read", ^{
-        expect(@"number").to.equal(@"string");
-    });
-    
-    it(@"will wait for 10 seconds and fail", ^{
-        waitUntil(^(DoneCallback done) {
-        
-        });
-    });
-});
 
 describe(@"these will pass", ^{
     

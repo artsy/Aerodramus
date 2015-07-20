@@ -1,0 +1,28 @@
+PODS:
+  - Aerodramus (0.1.0):
+    - ISO8601DateFormatter
+  - Expecta (1.0.0)
+  - ISO8601DateFormatter (0.7)
+  - Keys (1.0.0)
+  - Specta (1.0.2)
+
+DEPENDENCIES:
+  - Aerodramus (from `../`)
+  - Expecta
+  - Keys (from `Pods/CocoaPodsKeys`)
+  - Specta
+
+EXTERNAL SOURCES:
+  Aerodramus:
+    :path: "../"
+  Keys:
+    :path: Pods/CocoaPodsKeys
+
+SPEC CHECKSUMS:
+  Aerodramus: ad15f05635fd25ef88974b6194c3674172c4426f
+  Expecta: 32604574add2c46a36f8d2f716b6c5736eb75024
+  ISO8601DateFormatter: ab926648eebe497f4d167c0fd083992f959f1274
+  Keys: 7d2ff6ff42f6903358267ce56e9392f83c31acfe
+  Specta: 9cec98310dca411f7c7ffd6943552b501622abfe
+
+COCOAPODS: 0.37.2
