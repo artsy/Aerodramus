@@ -1,9 +1,6 @@
 # Aerodramus
 
-[![CI Status](http://img.shields.io/travis/Orta Therox/Aerodramus.svg?style=flat)](https://travis-ci.org/Orta Therox/Aerodramus)
-[![Version](https://img.shields.io/cocoapods/v/Aerodramus.svg?style=flat)](http://cocoapods.org/pods/Aerodramus)
-[![License](https://img.shields.io/cocoapods/l/Aerodramus.svg?style=flat)](http://cocoapods.org/pods/Aerodramus)
-[![Platform](https://img.shields.io/cocoapods/p/Aerodramus.svg?style=flat)](http://cocoapods.org/pods/Aerodramus)
+### An Objective-C API for interacting with [artsy/echo](https://github.com/artsy/echo)
 
 ## Usage
 
@@ -17,7 +14,7 @@ Aerodramus is available through [CocoaPods](http://cocoapods.org). To install
 it, simply add the following line to your Podfile:
 
 ```ruby
-pod "Aerodramus"
+pod "Aerodramus", :git => "git@github.com:artsy/Aerodramus.git"
 ```
 
 ## Author
