@@ -6,6 +6,8 @@
 #define NSArrayOf(x) NSArray
 #endif
 
+NS_ASSUME_NONNULL_BEGIN
+
 @class Route, Feature, Message;
 
 /// A class to communicate with the Artsy Echo API
@@ -24,7 +26,7 @@
 - (void)checkForUpdates:(void (^)(BOOL updatedDataOnServer))updateCheckCompleted;
 
 /// Updates the local instance with data from the server
-- (void)update:(void (^)(BOOL updated, NSError *error))completed;
+- (void)update:(void (^)(BOOL updated, NSError * _Nullable error))completed;
 
 /// Saves the current object to disk
 - (BOOL)saveToDisk:(void (^)(BOOL saved))saveCompleted;
@@ -48,3 +50,5 @@
 @property (nonatomic, nonnull, copy) NSArrayOf(Message *) *messages;
 
 @end
+
+NS_ASSUME_NONNULL_END

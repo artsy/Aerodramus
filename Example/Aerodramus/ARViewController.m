@@ -14,15 +14,14 @@
     [super viewDidLoad];
 
     AerodramusKeys *keys = [[AerodramusKeys alloc] init];
-
     NSURL *prodURL = [NSURL URLWithString:@"https://echo-api-production.herokuapp.com/"];
 
-    Aerodramus *aero = [[Aerodramus alloc] initWithServerURL:prodURL accountID:1 APIKey:keys.echoKey localFilename:@"default"];
+    Aerodramus *aero = [[Aerodramus alloc] initWithServerURL:prodURL accountID:1 APIKey:keys.echoKey localFilename:@"Echo"];
     [aero checkForUpdates:^(BOOL updatedDataOnServer) {
         if (!updatedDataOnServer) return;
 
         [aero update:^(BOOL updated, NSError *error) {
-
+            NSLog(@"Updated");
         }];
     }];
 }

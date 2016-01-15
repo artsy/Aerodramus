@@ -22,6 +22,7 @@
 		6003F5B2195388D20070C39A /* UIKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 6003F591195388D20070C39A /* UIKit.framework */; };
 		6003F5BA195388D20070C39A /* InfoPlist.strings in Resources */ = {isa = PBXBuildFile; fileRef = 6003F5B8195388D20070C39A /* InfoPlist.strings */; };
 		6003F5BC195388D20070C39A /* Tests.m in Sources */ = {isa = PBXBuildFile; fileRef = 6003F5BB195388D20070C39A /* Tests.m */; };
+		60E693961C4938F40058DF5F /* Echo.json in Resources */ = {isa = PBXBuildFile; fileRef = 60E693951C4938F40058DF5F /* Echo.json */; };
 		873B8AEB1B1F5CCA007FD442 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 873B8AEA1B1F5CCA007FD442 /* Main.storyboard */; };
 /* End PBXBuildFile section */
 
@@ -58,6 +59,7 @@
 		6003F5BB195388D20070C39A /* Tests.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = Tests.m; sourceTree = "<group>"; };
 		604419D8ADFAB14E672086FC /* Aerodramus.podspec */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text; name = Aerodramus.podspec; path = ../Aerodramus.podspec; sourceTree = "<group>"; };
 		606FC2411953D9B200FFA9A0 /* Tests-Prefix.pch */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = "Tests-Prefix.pch"; sourceTree = "<group>"; };
+		60E693951C4938F40058DF5F /* Echo.json */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.json; name = Echo.json; path = ../Echo.json; sourceTree = "<group>"; };
 		6A59D033B7742DFAD83AD7E9 /* Pods_Aerodramus_Example.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_Aerodramus_Example.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		70BBECC23EF8E77BD6AA7A68 /* Pods-Aerodramus_Tests.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-Aerodramus_Tests.release.xcconfig"; path = "Pods/Target Support Files/Pods-Aerodramus_Tests/Pods-Aerodramus_Tests.release.xcconfig"; sourceTree = "<group>"; };
 		7CE73E00B4A6469473E60EF7 /* Pods_Aerodramus_Tests.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_Aerodramus_Tests.framework; sourceTree = BUILT_PRODUCTS_DIR; };
@@ -141,6 +143,7 @@
 		6003F593195388D20070C39A /* Example for Aerodramus */ = {
 			isa = PBXGroup;
 			children = (
+				60E693951C4938F40058DF5F /* Echo.json */,
 				6003F59C195388D20070C39A /* ARAppDelegate.h */,
 				6003F59D195388D20070C39A /* ARAppDelegate.m */,
 				873B8AEA1B1F5CCA007FD442 /* Main.storyboard */,
@@ -276,6 +279,7 @@
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				60E693961C4938F40058DF5F /* Echo.json in Resources */,
 				873B8AEB1B1F5CCA007FD442 /* Main.storyboard in Resources */,
 				6003F5A9195388D20070C39A /* Images.xcassets in Resources */,
 				6003F598195388D20070C39A /* InfoPlist.strings in Resources */,

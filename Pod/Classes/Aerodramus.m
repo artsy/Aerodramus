@@ -25,22 +25,29 @@
     _router = [[AeroRouter alloc] initWithAPIKey:APIKey baseURL:url];
 
     NSURL *pathForStoredJSON = [self filePathForFileName:filename];
-    NSAssert(pathForStoredJSON, @"Could not find a local [filename].json for Aerodramus");
+    NSString *errorMessage = [NSString stringWithFormat:@"Could not find a default json for Aerodramus at %@", pathForStoredJSON];
+    NSAssert(pathForStoredJSON, errorMessage);
     if (!pathForStoredJSON) return nil;
 
-    NSData *data = [NSData dataWithContentsOfURL:url];
+    NSData *data = [NSData dataWithContentsOfURL:pathForStoredJSON];
     [self updateWithJSONData:data];
 
     return self;
 }
 
-- (NSURL *)filePathForFileName:(NSString *)name
+- (NSURL *)storedDocumentsFilePathWithName:(NSString *)name
 {
     NSFileManager *manager = [NSFileManager defaultManager];
     NSURL *docsDir = [[manager URLsForDirectory:NSDocumentDirectory inDomains:NSUserDomainMask] lastObject];
-    NSURL *fileDocsURL = [docsDir URLByAppendingPathComponent:[name stringByAppendingString:@".json"]];
+    return [docsDir URLByAppendingPathComponent:[name stringByAppendingString:@".json"]];
+}
 
+- (NSURL *)filePathForFileName:(NSString *)name
+{
+    NSFileManager *manager = [NSFileManager defaultManager];
+    NSURL *fileDocsURL = [self storedDocumentsFilePathWithName:name];
     if ([manager fileExistsAtPath:fileDocsURL.path]) { return fileDocsURL; }
+
     return [[NSBundle mainBundle] URLForResource:name withExtension:@"json"];
 }
 
@@ -88,7 +95,9 @@
             
             NSString *updatedAtString =  httpResponse.allHeaderFields[@"Updated-At"];
             NSDate *lastUpdatedDate = [formatter dateFromString:updatedAtString];
-            updateCheckCompleted([lastUpdatedDate laterDate:self.lastUpdatedDate]);
+
+            BOOL later = ([lastUpdatedDate compare:self.lastUpdatedDate] == NSOrderedDescending);
+            updateCheckCompleted(later);
             return;
         }
 
@@ -99,23 +108,31 @@
 
 - (void)update:(void (^)(BOOL updated, NSError *error))completed;
 {
-    NSURLRequest *request = [self.router headLastUpdateRequestForAccountID:self.accountID];
+    NSURLRequest *request = [self.router getFullContentRequestForAccountID:self.accountID];
     [self performRequest:request completionHandler:^(NSData *data, NSURLResponse *response, NSError *error) {
 
-        if (error) {
+        if (error || data == nil) {
             completed(NO, error);
             return;
         }
 
         [self updateWithJSONData:data];
-        completed(YES, nil);
+        BOOL saved = [self saveJSONToDisk:data];
+        completed(saved, nil);
+
         return;
     }];
 }
 
-- (BOOL)saveToDisk:(void (^)(BOOL saved))saveCompleted;
+- (BOOL)saveJSONToDisk:(NSData *)JSONdata
 {
-
+    NSError *error;
+    NSURL *url = [self storedDocumentsFilePathWithName:self.filename];
+    BOOL success = [JSONdata writeToURL:url options:NSDataWritingAtomic error:&error];
+    if (error) {
+        NSLog(@"Error saving Aerodramus json data: %@", error.localizedDescription);
+    }
+    return success;
 }
 
 

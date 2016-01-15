@@ -20,7 +20,7 @@
 
 - (NSURL *)urlForPath:(NSString *)path
 {
-    return [self.baseURL URLByAppendingPathExtension:path];
+    return [NSURL URLWithString:path relativeToURL:self.baseURL];
 }
 
 - (NSURLRequest *)headLastUpdateRequestForAccountID:(NSInteger)account
