@@ -74,7 +74,7 @@
         return [[Message alloc] initWithName:messageDict[@"name"] content:messageDict[@"content"]];
     }];
 
-    _routes = [self mapArray:JSON[@"routes"] map:^id(NSDictionary *routeDict) {
+    _routes = [self mapDict:JSON[@"routes"] map:^id(NSDictionary *routeDict) {
         return [[Route alloc] initWithName:routeDict[@"name"] route:routeDict[@"route"]];
     }];
 }
@@ -149,6 +149,20 @@
     }
 
     return [NSArray arrayWithArray:newArray];
+}
+
+- (NSDictionary *)mapDict:(NSArray *)array map:(id (^)(id object))block {
+    NSMutableDictionary *newDict = [NSMutableDictionary dictionary];
+
+    for (id object in array) {
+        id newObject = block(object);
+        if (newObject) {
+            NSString *key = object[@"name"];
+            newDict[key] = newObject;
+        }
+    }
+
+    return [NSDictionary dictionaryWithDictionary:newDict];
 }
 
 - (void)performRequest:(NSURLRequest *)request completionHandler:(void (^)(NSData *data, NSURLResponse *response, NSError *error))completionHandler;
