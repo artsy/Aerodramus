@@ -40,10 +40,10 @@ NS_ASSUME_NONNULL_BEGIN
 @property (nonatomic, nonnull, strong) NSDate *lastUpdatedDate;
 
 /// Collection of routes from the echo server
-@property (nonatomic, nonnull, copy) NSArrayOf(Route *) *routes;
+@property (nonatomic, nonnull, copy) NSDictionaryOf(NSString *, Route *) *routes;
 
 /// Collection of boolean feature switches from the echo server
-@property (nonatomic, nonnull, copy) NSDictionaryOf(NSString *, Feature *) *features;
+@property (nonatomic, nonnull, copy) NSArrayOf(Feature *) *features;
 
 /// Collection of messages from the echo server
 @property (nonatomic, nonnull, copy) NSArrayOf(Message *) *messages;
