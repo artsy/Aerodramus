@@ -75,7 +75,7 @@
     }];
 
     _routes = [self mapDict:JSON[@"routes"] map:^id(NSDictionary *routeDict) {
-        return [[Route alloc] initWithName:routeDict[@"name"] route:routeDict[@"route"]];
+        return [[Route alloc] initWithName:routeDict[@"name"] route:routeDict[@"path"]];
     }];
 }
 
