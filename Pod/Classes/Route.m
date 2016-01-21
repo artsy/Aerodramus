@@ -2,13 +2,13 @@
 
 @implementation Route
 
-- (instancetype)initWithName:(NSString *)name route:(NSString *)route
+- (instancetype)initWithName:(NSString *)name path:(NSString *)path
 {
     self = [super init];
     if (!self) return nil;
 
     _name = name;
-    _route = route;
+    _path = path;
     return self;
 }
 
