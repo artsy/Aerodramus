@@ -10,6 +10,7 @@
 @interface Aerodramus()
 @property (nonatomic, copy, readonly) NSString *filename;
 @property (nonatomic, strong, readonly) AeroRouter *router;
+@property (nonatomic, strong) NSFileManager *fileManager;
 @end
 
 @implementation Aerodramus
@@ -24,31 +25,37 @@
     _accountID = accountID;
     _router = [[AeroRouter alloc] initWithAPIKey:APIKey baseURL:url];
 
-    NSURL *pathForStoredJSON = [self filePathForFileName:filename];
-    NSString *errorMessage = [NSString stringWithFormat:@"Could not find a default json for Aerodramus at %@", pathForStoredJSON];
-    NSAssert(pathForStoredJSON, errorMessage);
-    if (!pathForStoredJSON) return nil;
-
-    NSData *data = [NSData dataWithContentsOfURL:pathForStoredJSON];
-    [self updateWithJSONData:data];
-
     return self;
+}
+
+- (void)setup
+{
+    NSURL *pathForStoredJSON = [self filePathForFileName:self.filename];
+    NSString *errorMessage = [NSString stringWithFormat:@"Could not find a default json for Aerodramus at %@", pathForStoredJSON];
+
+    NSAssert(pathForStoredJSON, errorMessage);
+    if (!pathForStoredJSON) return;
+
+    NSData *data = [self.fileManager contentsAtPath:pathForStoredJSON.path];
+    [self updateWithJSONData:data];
 }
 
 - (NSURL *)storedDocumentsFilePathWithName:(NSString *)name
 {
-    NSFileManager *manager = [NSFileManager defaultManager];
-    NSURL *docsDir = [[manager URLsForDirectory:NSDocumentDirectory inDomains:NSUserDomainMask] lastObject];
+    NSURL *docsDir = [[self.fileManager URLsForDirectory:NSDocumentDirectory inDomains:NSUserDomainMask] lastObject];
     return [docsDir URLByAppendingPathComponent:[name stringByAppendingString:@".json"]];
 }
 
 - (NSURL *)filePathForFileName:(NSString *)name
 {
-    NSFileManager *manager = [NSFileManager defaultManager];
     NSURL *fileDocsURL = [self storedDocumentsFilePathWithName:name];
-    if ([manager fileExistsAtPath:fileDocsURL.path]) { return fileDocsURL; }
+    if ([self.fileManager fileExistsAtPath:fileDocsURL.path]) { return fileDocsURL; }
 
-    return [[NSBundle mainBundle] URLForResource:name withExtension:@"json"];
+    NSURL *bundlePath = [NSBundle.mainBundle bundleURL];
+    NSURL *fileAppURL = [bundlePath URLByAppendingPathComponent:[name stringByAppendingString:@".json"]];
+    if ([self.fileManager fileExistsAtPath:fileAppURL.path]) { return fileAppURL; }
+
+    return nil;
 }
 
 - (void)updateWithJSONData:(NSData *)JSONdata
@@ -171,6 +178,13 @@
     NSURLSession *session = [NSURLSession sessionWithConfiguration:configuration];
     NSURLSessionDataTask *task = [session dataTaskWithRequest:request completionHandler:completionHandler];
     [task resume];
+}
+
+#pragma mark - DI 
+
+- (NSFileManager *)fileManager
+{
+    return _fileManager ?: [NSFileManager defaultManager];
 }
 
 @end

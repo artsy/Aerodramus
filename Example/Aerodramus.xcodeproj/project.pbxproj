@@ -7,6 +7,8 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		21BDA3E775962512661241AF /* Pods_Aerodramus_ExampleTests.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = DF60E3291B4BE0B26B0FB2DB /* Pods_Aerodramus_ExampleTests.framework */; settings = {ATTRIBUTES = (Weak, ); }; };
+		4CE5BFEC796F3ADDC63C3C6A /* Pods_Aerodramus_Example.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 601484249AB14641FFC92AB3 /* Pods_Aerodramus_Example.framework */; settings = {ATTRIBUTES = (Weak, ); }; };
 		6003F58E195388D20070C39A /* Foundation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 6003F58D195388D20070C39A /* Foundation.framework */; };
 		6003F590195388D20070C39A /* CoreGraphics.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 6003F58F195388D20070C39A /* CoreGraphics.framework */; };
 		6003F592195388D20070C39A /* UIKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 6003F591195388D20070C39A /* UIKit.framework */; };
@@ -16,10 +18,9 @@
 		6003F5A7195388D20070C39A /* ARViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 6003F5A6195388D20070C39A /* ARViewController.m */; };
 		6003F5A9195388D20070C39A /* Images.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 6003F5A8195388D20070C39A /* Images.xcassets */; };
 		60E693961C4938F40058DF5F /* Echo.json in Resources */ = {isa = PBXBuildFile; fileRef = 60E693951C4938F40058DF5F /* Echo.json */; };
-		60E6939E1C494E1D0058DF5F /* Aerodramus_ExampleTests.m in Sources */ = {isa = PBXBuildFile; fileRef = 60E6939D1C494E1D0058DF5F /* Aerodramus_ExampleTests.m */; };
-		703E84077F195AE32D1E5190 /* Pods_Aerodramus_Example.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = C918E47BB78AF56488795EC5 /* Pods_Aerodramus_Example.framework */; };
+		60E6939E1C494E1D0058DF5F /* AerodramusSpec.m in Sources */ = {isa = PBXBuildFile; fileRef = 60E6939D1C494E1D0058DF5F /* AerodramusSpec.m */; };
+		60F63AB21C57A34F00DCFF2A /* EchoStubbed.json in Resources */ = {isa = PBXBuildFile; fileRef = 60F63AB11C57A34F00DCFF2A /* EchoStubbed.json */; };
 		873B8AEB1B1F5CCA007FD442 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 873B8AEA1B1F5CCA007FD442 /* Main.storyboard */; };
-		F0F9E094FC9146BE2B18D465 /* Pods_Aerodramus_ExampleTests.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 9C8D214E1BDF342434147133 /* Pods_Aerodramus_ExampleTests.framework */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -33,7 +34,9 @@
 /* End PBXContainerItemProxy section */
 
 /* Begin PBXFileReference section */
-		0815E8935BF1DB7E6762B617 /* Pods-Aerodramus_Example.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-Aerodramus_Example.debug.xcconfig"; path = "Pods/Target Support Files/Pods-Aerodramus_Example/Pods-Aerodramus_Example.debug.xcconfig"; sourceTree = "<group>"; };
+		0BD189A7FB650DAA33AA2E82 /* Pods-Aerodramus_Example.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-Aerodramus_Example.debug.xcconfig"; path = "Pods/Target Support Files/Pods-Aerodramus_Example/Pods-Aerodramus_Example.debug.xcconfig"; sourceTree = "<group>"; };
+		1F0ED5D965F592B3DDA082B7 /* Pods-Aerodramus_ExampleTests.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-Aerodramus_ExampleTests.debug.xcconfig"; path = "Pods/Target Support Files/Pods-Aerodramus_ExampleTests/Pods-Aerodramus_ExampleTests.debug.xcconfig"; sourceTree = "<group>"; };
+		5DDBB647AC6E095088D06922 /* Pods-Aerodramus_ExampleTests.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-Aerodramus_ExampleTests.release.xcconfig"; path = "Pods/Target Support Files/Pods-Aerodramus_ExampleTests/Pods-Aerodramus_ExampleTests.release.xcconfig"; sourceTree = "<group>"; };
 		6003F58A195388D20070C39A /* Aerodramus_Example.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = Aerodramus_Example.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		6003F58D195388D20070C39A /* Foundation.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Foundation.framework; path = System/Library/Frameworks/Foundation.framework; sourceTree = SDKROOT; };
 		6003F58F195388D20070C39A /* CoreGraphics.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = CoreGraphics.framework; path = System/Library/Frameworks/CoreGraphics.framework; sourceTree = SDKROOT; };
@@ -48,19 +51,18 @@
 		6003F5A6195388D20070C39A /* ARViewController.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = ARViewController.m; sourceTree = "<group>"; };
 		6003F5A8195388D20070C39A /* Images.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Images.xcassets; sourceTree = "<group>"; };
 		6003F5AF195388D20070C39A /* XCTest.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = XCTest.framework; path = Library/Frameworks/XCTest.framework; sourceTree = DEVELOPER_DIR; };
+		601484249AB14641FFC92AB3 /* Pods_Aerodramus_Example.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_Aerodramus_Example.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		604419D8ADFAB14E672086FC /* Aerodramus.podspec */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text; name = Aerodramus.podspec; path = ../Aerodramus.podspec; sourceTree = "<group>"; };
 		60E693951C4938F40058DF5F /* Echo.json */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.json; name = Echo.json; path = ../Echo.json; sourceTree = "<group>"; };
 		60E6939B1C494E1D0058DF5F /* Aerodramus_ExampleTests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = Aerodramus_ExampleTests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
-		60E6939D1C494E1D0058DF5F /* Aerodramus_ExampleTests.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = Aerodramus_ExampleTests.m; sourceTree = "<group>"; };
+		60E6939D1C494E1D0058DF5F /* AerodramusSpec.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = AerodramusSpec.m; sourceTree = "<group>"; };
 		60E6939F1C494E1D0058DF5F /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		60F63AB11C57A34F00DCFF2A /* EchoStubbed.json */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.json; path = EchoStubbed.json; sourceTree = "<group>"; };
 		873B8AEA1B1F5CCA007FD442 /* Main.storyboard */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.storyboard; path = Main.storyboard; sourceTree = "<group>"; };
-		888437E4B18DA46F7FD796D3 /* Pods-Aerodramus_ExampleTests.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-Aerodramus_ExampleTests.debug.xcconfig"; path = "Pods/Target Support Files/Pods-Aerodramus_ExampleTests/Pods-Aerodramus_ExampleTests.debug.xcconfig"; sourceTree = "<group>"; };
 		94F09FC2DA4FC295F6E96103 /* README.md */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = net.daringfireball.markdown; name = README.md; path = ../README.md; sourceTree = "<group>"; };
-		9C8D214E1BDF342434147133 /* Pods_Aerodramus_ExampleTests.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_Aerodramus_ExampleTests.framework; sourceTree = BUILT_PRODUCTS_DIR; };
-		9F9A9C1923B0E34031D44DC7 /* Pods-Aerodramus_ExampleTests.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-Aerodramus_ExampleTests.release.xcconfig"; path = "Pods/Target Support Files/Pods-Aerodramus_ExampleTests/Pods-Aerodramus_ExampleTests.release.xcconfig"; sourceTree = "<group>"; };
 		A83FA455873789DD5C2B0C4A /* LICENSE */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text; name = LICENSE; path = ../LICENSE; sourceTree = "<group>"; };
-		ADC72D464A1DF7819DED1D97 /* Pods-Aerodramus_Example.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-Aerodramus_Example.release.xcconfig"; path = "Pods/Target Support Files/Pods-Aerodramus_Example/Pods-Aerodramus_Example.release.xcconfig"; sourceTree = "<group>"; };
-		C918E47BB78AF56488795EC5 /* Pods_Aerodramus_Example.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_Aerodramus_Example.framework; sourceTree = BUILT_PRODUCTS_DIR; };
+		DF60E3291B4BE0B26B0FB2DB /* Pods_Aerodramus_ExampleTests.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_Aerodramus_ExampleTests.framework; sourceTree = BUILT_PRODUCTS_DIR; };
+		FD9F7E5A2748A2D92CF3B4CE /* Pods-Aerodramus_Example.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-Aerodramus_Example.release.xcconfig"; path = "Pods/Target Support Files/Pods-Aerodramus_Example/Pods-Aerodramus_Example.release.xcconfig"; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -71,7 +73,7 @@
 				6003F590195388D20070C39A /* CoreGraphics.framework in Frameworks */,
 				6003F592195388D20070C39A /* UIKit.framework in Frameworks */,
 				6003F58E195388D20070C39A /* Foundation.framework in Frameworks */,
-				703E84077F195AE32D1E5190 /* Pods_Aerodramus_Example.framework in Frameworks */,
+				4CE5BFEC796F3ADDC63C3C6A /* Pods_Aerodramus_Example.framework in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -79,7 +81,7 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				F0F9E094FC9146BE2B18D465 /* Pods_Aerodramus_ExampleTests.framework in Frameworks */,
+				21BDA3E775962512661241AF /* Pods_Aerodramus_ExampleTests.framework in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -94,7 +96,7 @@
 				60E6939C1C494E1D0058DF5F /* Aerodramus_ExampleTests */,
 				6003F58C195388D20070C39A /* Frameworks */,
 				6003F58B195388D20070C39A /* Products */,
-				F98BDC450ED84D609C6F8640 /* Pods */,
+				6D3BAA33247DB0915D5D8C24 /* Pods */,
 			);
 			sourceTree = "<group>";
 		};
@@ -114,8 +116,8 @@
 				6003F58F195388D20070C39A /* CoreGraphics.framework */,
 				6003F591195388D20070C39A /* UIKit.framework */,
 				6003F5AF195388D20070C39A /* XCTest.framework */,
-				C918E47BB78AF56488795EC5 /* Pods_Aerodramus_Example.framework */,
-				9C8D214E1BDF342434147133 /* Pods_Aerodramus_ExampleTests.framework */,
+				601484249AB14641FFC92AB3 /* Pods_Aerodramus_Example.framework */,
+				DF60E3291B4BE0B26B0FB2DB /* Pods_Aerodramus_ExampleTests.framework */,
 			);
 			name = Frameworks;
 			sourceTree = "<group>";
@@ -124,6 +126,7 @@
 			isa = PBXGroup;
 			children = (
 				60E693951C4938F40058DF5F /* Echo.json */,
+				60F63AB11C57A34F00DCFF2A /* EchoStubbed.json */,
 				6003F59C195388D20070C39A /* ARAppDelegate.h */,
 				6003F59D195388D20070C39A /* ARAppDelegate.m */,
 				873B8AEA1B1F5CCA007FD442 /* Main.storyboard */,
@@ -150,7 +153,7 @@
 		60E6939C1C494E1D0058DF5F /* Aerodramus_ExampleTests */ = {
 			isa = PBXGroup;
 			children = (
-				60E6939D1C494E1D0058DF5F /* Aerodramus_ExampleTests.m */,
+				60E6939D1C494E1D0058DF5F /* AerodramusSpec.m */,
 				60E6939F1C494E1D0058DF5F /* Info.plist */,
 			);
 			path = Aerodramus_ExampleTests;
@@ -166,13 +169,13 @@
 			name = "Podspec Metadata";
 			sourceTree = "<group>";
 		};
-		F98BDC450ED84D609C6F8640 /* Pods */ = {
+		6D3BAA33247DB0915D5D8C24 /* Pods */ = {
 			isa = PBXGroup;
 			children = (
-				0815E8935BF1DB7E6762B617 /* Pods-Aerodramus_Example.debug.xcconfig */,
-				ADC72D464A1DF7819DED1D97 /* Pods-Aerodramus_Example.release.xcconfig */,
-				888437E4B18DA46F7FD796D3 /* Pods-Aerodramus_ExampleTests.debug.xcconfig */,
-				9F9A9C1923B0E34031D44DC7 /* Pods-Aerodramus_ExampleTests.release.xcconfig */,
+				0BD189A7FB650DAA33AA2E82 /* Pods-Aerodramus_Example.debug.xcconfig */,
+				FD9F7E5A2748A2D92CF3B4CE /* Pods-Aerodramus_Example.release.xcconfig */,
+				1F0ED5D965F592B3DDA082B7 /* Pods-Aerodramus_ExampleTests.debug.xcconfig */,
+				5DDBB647AC6E095088D06922 /* Pods-Aerodramus_ExampleTests.release.xcconfig */,
 			);
 			name = Pods;
 			sourceTree = "<group>";
@@ -184,12 +187,12 @@
 			isa = PBXNativeTarget;
 			buildConfigurationList = 6003F5BF195388D20070C39A /* Build configuration list for PBXNativeTarget "Aerodramus_Example" */;
 			buildPhases = (
-				FD180EC9A6AA5958194838A5 /* Check Pods Manifest.lock */,
+				5859EF210F29A9947A3737EF /* Check Pods Manifest.lock */,
 				6003F586195388D20070C39A /* Sources */,
 				6003F587195388D20070C39A /* Frameworks */,
 				6003F588195388D20070C39A /* Resources */,
-				556B90AB3AF7D0A9D96F9EF0 /* Embed Pods Frameworks */,
-				35A62608394BD186D3E87A19 /* Copy Pods Resources */,
+				EE65BDA060EB242431174F65 /* Embed Pods Frameworks */,
+				B92E1DA1F6692652833EF85B /* Copy Pods Resources */,
 			);
 			buildRules = (
 			);
@@ -204,12 +207,12 @@
 			isa = PBXNativeTarget;
 			buildConfigurationList = 60E693A21C494E1D0058DF5F /* Build configuration list for PBXNativeTarget "Aerodramus_ExampleTests" */;
 			buildPhases = (
-				3D9BC8F79AE2495151B2C57C /* Check Pods Manifest.lock */,
+				386B7B04397AFA4D7BFFBF56 /* Check Pods Manifest.lock */,
 				60E693971C494E1D0058DF5F /* Sources */,
 				60E693981C494E1D0058DF5F /* Frameworks */,
 				60E693991C494E1D0058DF5F /* Resources */,
-				371D84947E1B86F969C43B3C /* Embed Pods Frameworks */,
-				D6716C30F4DDBAE6E14A34BC /* Copy Pods Resources */,
+				30EE043CCC414D44E768D690 /* Embed Pods Frameworks */,
+				462F1471CF914C3F4EFFEA87 /* Copy Pods Resources */,
 			);
 			buildRules = (
 			);
@@ -265,6 +268,7 @@
 				873B8AEB1B1F5CCA007FD442 /* Main.storyboard in Resources */,
 				6003F5A9195388D20070C39A /* Images.xcassets in Resources */,
 				6003F598195388D20070C39A /* InfoPlist.strings in Resources */,
+				60F63AB21C57A34F00DCFF2A /* EchoStubbed.json in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -278,22 +282,7 @@
 /* End PBXResourcesBuildPhase section */
 
 /* Begin PBXShellScriptBuildPhase section */
-		35A62608394BD186D3E87A19 /* Copy Pods Resources */ = {
-			isa = PBXShellScriptBuildPhase;
-			buildActionMask = 2147483647;
-			files = (
-			);
-			inputPaths = (
-			);
-			name = "Copy Pods Resources";
-			outputPaths = (
-			);
-			runOnlyForDeploymentPostprocessing = 0;
-			shellPath = /bin/sh;
-			shellScript = "\"${SRCROOT}/Pods/Target Support Files/Pods-Aerodramus_Example/Pods-Aerodramus_Example-resources.sh\"\n";
-			showEnvVarsInLog = 0;
-		};
-		371D84947E1B86F969C43B3C /* Embed Pods Frameworks */ = {
+		30EE043CCC414D44E768D690 /* Embed Pods Frameworks */ = {
 			isa = PBXShellScriptBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
@@ -308,7 +297,7 @@
 			shellScript = "\"${SRCROOT}/Pods/Target Support Files/Pods-Aerodramus_ExampleTests/Pods-Aerodramus_ExampleTests-frameworks.sh\"\n";
 			showEnvVarsInLog = 0;
 		};
-		3D9BC8F79AE2495151B2C57C /* Check Pods Manifest.lock */ = {
+		386B7B04397AFA4D7BFFBF56 /* Check Pods Manifest.lock */ = {
 			isa = PBXShellScriptBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
@@ -323,22 +312,7 @@
 			shellScript = "diff \"${PODS_ROOT}/../Podfile.lock\" \"${PODS_ROOT}/Manifest.lock\" > /dev/null\nif [[ $? != 0 ]] ; then\n    cat << EOM\nerror: The sandbox is not in sync with the Podfile.lock. Run 'pod install' or update your CocoaPods installation.\nEOM\n    exit 1\nfi\n";
 			showEnvVarsInLog = 0;
 		};
-		556B90AB3AF7D0A9D96F9EF0 /* Embed Pods Frameworks */ = {
-			isa = PBXShellScriptBuildPhase;
-			buildActionMask = 2147483647;
-			files = (
-			);
-			inputPaths = (
-			);
-			name = "Embed Pods Frameworks";
-			outputPaths = (
-			);
-			runOnlyForDeploymentPostprocessing = 0;
-			shellPath = /bin/sh;
-			shellScript = "\"${SRCROOT}/Pods/Target Support Files/Pods-Aerodramus_Example/Pods-Aerodramus_Example-frameworks.sh\"\n";
-			showEnvVarsInLog = 0;
-		};
-		D6716C30F4DDBAE6E14A34BC /* Copy Pods Resources */ = {
+		462F1471CF914C3F4EFFEA87 /* Copy Pods Resources */ = {
 			isa = PBXShellScriptBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
@@ -353,7 +327,7 @@
 			shellScript = "\"${SRCROOT}/Pods/Target Support Files/Pods-Aerodramus_ExampleTests/Pods-Aerodramus_ExampleTests-resources.sh\"\n";
 			showEnvVarsInLog = 0;
 		};
-		FD180EC9A6AA5958194838A5 /* Check Pods Manifest.lock */ = {
+		5859EF210F29A9947A3737EF /* Check Pods Manifest.lock */ = {
 			isa = PBXShellScriptBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
@@ -366,6 +340,36 @@
 			runOnlyForDeploymentPostprocessing = 0;
 			shellPath = /bin/sh;
 			shellScript = "diff \"${PODS_ROOT}/../Podfile.lock\" \"${PODS_ROOT}/Manifest.lock\" > /dev/null\nif [[ $? != 0 ]] ; then\n    cat << EOM\nerror: The sandbox is not in sync with the Podfile.lock. Run 'pod install' or update your CocoaPods installation.\nEOM\n    exit 1\nfi\n";
+			showEnvVarsInLog = 0;
+		};
+		B92E1DA1F6692652833EF85B /* Copy Pods Resources */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputPaths = (
+			);
+			name = "Copy Pods Resources";
+			outputPaths = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "\"${SRCROOT}/Pods/Target Support Files/Pods-Aerodramus_Example/Pods-Aerodramus_Example-resources.sh\"\n";
+			showEnvVarsInLog = 0;
+		};
+		EE65BDA060EB242431174F65 /* Embed Pods Frameworks */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputPaths = (
+			);
+			name = "Embed Pods Frameworks";
+			outputPaths = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "\"${SRCROOT}/Pods/Target Support Files/Pods-Aerodramus_Example/Pods-Aerodramus_Example-frameworks.sh\"\n";
 			showEnvVarsInLog = 0;
 		};
 /* End PBXShellScriptBuildPhase section */
@@ -385,7 +389,7 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				60E6939E1C494E1D0058DF5F /* Aerodramus_ExampleTests.m in Sources */,
+				60E6939E1C494E1D0058DF5F /* AerodramusSpec.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -485,7 +489,7 @@
 		};
 		6003F5C0195388D20070C39A /* Debug */ = {
 			isa = XCBuildConfiguration;
-			baseConfigurationReference = 0815E8935BF1DB7E6762B617 /* Pods-Aerodramus_Example.debug.xcconfig */;
+			baseConfigurationReference = 0BD189A7FB650DAA33AA2E82 /* Pods-Aerodramus_Example.debug.xcconfig */;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				ASSETCATALOG_COMPILER_LAUNCHIMAGE_NAME = LaunchImage;
@@ -501,7 +505,7 @@
 		};
 		6003F5C1195388D20070C39A /* Release */ = {
 			isa = XCBuildConfiguration;
-			baseConfigurationReference = ADC72D464A1DF7819DED1D97 /* Pods-Aerodramus_Example.release.xcconfig */;
+			baseConfigurationReference = FD9F7E5A2748A2D92CF3B4CE /* Pods-Aerodramus_Example.release.xcconfig */;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				ASSETCATALOG_COMPILER_LAUNCHIMAGE_NAME = LaunchImage;
@@ -517,7 +521,7 @@
 		};
 		60E693A31C494E1D0058DF5F /* Debug */ = {
 			isa = XCBuildConfiguration;
-			baseConfigurationReference = 888437E4B18DA46F7FD796D3 /* Pods-Aerodramus_ExampleTests.debug.xcconfig */;
+			baseConfigurationReference = 1F0ED5D965F592B3DDA082B7 /* Pods-Aerodramus_ExampleTests.debug.xcconfig */;
 			buildSettings = {
 				BUNDLE_LOADER = "$(TEST_HOST)";
 				CLANG_WARN_UNREACHABLE_CODE = YES;
@@ -537,7 +541,7 @@
 		};
 		60E693A41C494E1D0058DF5F /* Release */ = {
 			isa = XCBuildConfiguration;
-			baseConfigurationReference = 9F9A9C1923B0E34031D44DC7 /* Pods-Aerodramus_ExampleTests.release.xcconfig */;
+			baseConfigurationReference = 5DDBB647AC6E095088D06922 /* Pods-Aerodramus_ExampleTests.release.xcconfig */;
 			buildSettings = {
 				BUNDLE_LOADER = "$(TEST_HOST)";
 				CLANG_WARN_UNREACHABLE_CODE = YES;

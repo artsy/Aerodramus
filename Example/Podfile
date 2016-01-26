@@ -20,4 +20,5 @@ target 'Aerodramus_ExampleTests' do
 
   pod 'Specta'
   pod 'Expecta'
+  pod 'Forgeries', :path => "/Users/orta/dev/ios/libs/Forgeries"
 end

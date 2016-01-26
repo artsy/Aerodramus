@@ -8,6 +8,11 @@
 #define NSDictionaryOf(x,y) NSDictionary
 #endif
 
+#import "Route.h"
+#import "Feature.h"
+#import "Message.h"
+#import "AeroRouter.h"
+
 NS_ASSUME_NONNULL_BEGIN
 
 @class Route, Feature, Message;
@@ -23,6 +28,9 @@ NS_ASSUME_NONNULL_BEGIN
 /// and then fall back to looking inside the App bundle.
 
 - (instancetype)initWithServerURL:(NSURL *)url accountID:(NSInteger)accountID APIKey:(NSString *)APIKey localFilename:(NSString *)filename;
+
+/// Grabs the local JSON and sets itself up
+- (void)setup;
 
 /// Does a HEAD request against the server comparing the local date with the last changed
 - (void)checkForUpdates:(void (^)(BOOL updatedDataOnServer))updateCheckCompleted;
