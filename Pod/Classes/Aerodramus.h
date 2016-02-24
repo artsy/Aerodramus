@@ -51,7 +51,7 @@ NS_ASSUME_NONNULL_BEGIN
 @property (nonatomic, nonnull, copy) NSDictionaryOf(NSString *, Route *) *routes;
 
 /// Collection of boolean feature switches from the echo server
-@property (nonatomic, nonnull, copy) NSArrayOf(Feature *) *features;
+@property (nonatomic, nonnull, copy) NSDictionaryOf(NSString *, Feature *) *features;
 
 /// Collection of messages from the echo server
 @property (nonatomic, nonnull, copy) NSArrayOf(Message *) *messages;

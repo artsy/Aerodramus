@@ -13,12 +13,12 @@ plugin 'cocoapods-keys', {
 
 target 'Aerodramus_Example' do
   pod "Aerodramus", :path => "../"
-end
 
-target 'Aerodramus_ExampleTests' do
-  pod "Aerodramus", :path => "../"
-
-  pod 'Specta'
-  pod 'Expecta'
-  pod 'Forgeries'
+  target 'Aerodramus_ExampleTests' do
+    inherit! :search_paths
+    
+    pod 'Specta'
+    pod 'Expecta'
+    pod 'Forgeries'
+  end
 end

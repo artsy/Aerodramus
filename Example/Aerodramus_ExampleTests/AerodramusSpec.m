@@ -69,7 +69,7 @@ describe(@"ORM", ^{
         [subject setup];
         expect([subject features].count).to.equal(2);
 
-        Feature *feature = subject.features.firstObject;
+        Feature *feature = subject.features[@"ipad_vir"];
         expect(feature.name).to.equal(@"ipad_vir");
         expect(feature.state).to.equal(false);
     });

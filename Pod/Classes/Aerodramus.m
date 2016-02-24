@@ -73,7 +73,7 @@
     _lastUpdatedDate = [formatter dateFromString:lastUpdatedDateString];
     _name = [JSON[@"name"] copy];
 
-    _features = [self mapArray:JSON[@"features"] map:^id(NSDictionary *featureDict) {
+    _features = [self mapDict:JSON[@"features"] map:^id(NSDictionary *featureDict) {
         return [[Feature alloc] initWithName:featureDict[@"name"] state:featureDict[@"value"]];
     }];
 
