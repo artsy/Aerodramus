@@ -11,11 +11,11 @@ plugin 'cocoapods-keys', {
     :keys => ["EchoKey"]
 }
 
-target 'Aerodramus_Example', :exclusive => true do
-  pod "Aerodramus", :path => "../"
+target 'Aerodramus_Example' do
+   pod "Aerodramus", :path => "../"
 end
 
-target 'Aerodramus_Tests', :exclusive => true do
+target 'Aerodramus_Tests' do
   pod "Aerodramus", :path => "../"
 
   pod 'Specta'
