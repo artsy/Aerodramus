@@ -11,5 +11,5 @@ dependencies:
 
 test:
   override: 
-    - set -o pipefail && xcodebuild test -workspace Example/Aerodramus.xcworkspace -scheme Aerodramus-Example -sdk iphonesimulator ONLY_ACTIVE_ARCH=NO -destination "name='iPhone 6s'" | xcpretty -c 
+    - set -o pipefail && xcodebuild test -workspace Example/Aerodramus.xcworkspace -scheme Aerodramus-Example -sdk iphonesimulator ONLY_ACTIVE_ARCH=NO -destination "platform=iOS Simulator,name=iPhone 6s,OS=10.2" | xcpretty -c
     - bundle exec pod lib lint --allow-warnings
