@@ -2,9 +2,16 @@
 
 #if __has_feature(objc_generics)
 #define NSArrayOf(x) NSArray<x>
+#define NSDictionaryOf(x,y) NSDictionary<x, y>
 #else
 #define NSArrayOf(x) NSArray
+#define NSDictionaryOf(x,y) NSDictionary
 #endif
+
+#import "Route.h"
+#import "Feature.h"
+#import "Message.h"
+#import "AeroRouter.h"
 
 NS_ASSUME_NONNULL_BEGIN
 
@@ -22,14 +29,14 @@ NS_ASSUME_NONNULL_BEGIN
 
 - (instancetype)initWithServerURL:(NSURL *)url accountID:(NSInteger)accountID APIKey:(NSString *)APIKey localFilename:(NSString *)filename;
 
+/// Grabs the local JSON and sets itself up
+- (void)setup;
+
 /// Does a HEAD request against the server comparing the local date with the last changed
 - (void)checkForUpdates:(void (^)(BOOL updatedDataOnServer))updateCheckCompleted;
 
 /// Updates the local instance with data from the server
 - (void)update:(void (^)(BOOL updated, NSError * _Nullable error))completed;
-
-/// Saves the current object to disk
-- (BOOL)saveToDisk:(void (^)(BOOL saved))saveCompleted;
 
 /// The Echo account name for this app
 @property (nonatomic, nonnull, copy) NSString *name;
@@ -41,10 +48,10 @@ NS_ASSUME_NONNULL_BEGIN
 @property (nonatomic, nonnull, strong) NSDate *lastUpdatedDate;
 
 /// Collection of routes from the echo server
-@property (nonatomic, nonnull, copy) NSArrayOf(Route *) *routes;
+@property (nonatomic, nonnull, copy) NSDictionaryOf(NSString *, Route *) *routes;
 
 /// Collection of boolean feature switches from the echo server
-@property (nonatomic, nonnull, copy) NSArrayOf(Feature *) *features;
+@property (nonatomic, nonnull, copy) NSDictionaryOf(NSString *, Feature *) *features;
 
 /// Collection of messages from the echo server
 @property (nonatomic, nonnull, copy) NSArrayOf(Message *) *messages;

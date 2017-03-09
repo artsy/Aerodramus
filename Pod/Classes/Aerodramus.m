@@ -10,6 +10,7 @@
 @interface Aerodramus()
 @property (nonatomic, copy, readonly) NSString *filename;
 @property (nonatomic, strong, readonly) AeroRouter *router;
+@property (nonatomic, strong) NSFileManager *fileManager;
 @end
 
 @implementation Aerodramus
@@ -24,31 +25,37 @@
     _accountID = accountID;
     _router = [[AeroRouter alloc] initWithAPIKey:APIKey baseURL:url];
 
-    NSURL *pathForStoredJSON = [self filePathForFileName:filename];
-    NSString *errorMessage = [NSString stringWithFormat:@"Could not find a default json for Aerodramus at %@", pathForStoredJSON];
-    NSAssert(pathForStoredJSON, errorMessage);
-    if (!pathForStoredJSON) return nil;
-
-    NSData *data = [NSData dataWithContentsOfURL:pathForStoredJSON];
-    [self updateWithJSONData:data];
-
     return self;
+}
+
+- (void)setup
+{
+    NSURL *pathForStoredJSON = [self filePathForFileName:self.filename];
+    NSString *errorMessage = [NSString stringWithFormat:@"Could not find a default json for Aerodramus at %@", pathForStoredJSON];
+
+    NSAssert(pathForStoredJSON, errorMessage);
+    if (!pathForStoredJSON) return;
+
+    NSData *data = [self.fileManager contentsAtPath:pathForStoredJSON.path];
+    [self updateWithJSONData:data];
 }
 
 - (NSURL *)storedDocumentsFilePathWithName:(NSString *)name
 {
-    NSFileManager *manager = [NSFileManager defaultManager];
-    NSURL *docsDir = [[manager URLsForDirectory:NSDocumentDirectory inDomains:NSUserDomainMask] lastObject];
+    NSURL *docsDir = [[self.fileManager URLsForDirectory:NSDocumentDirectory inDomains:NSUserDomainMask] lastObject];
     return [docsDir URLByAppendingPathComponent:[name stringByAppendingString:@".json"]];
 }
 
 - (NSURL *)filePathForFileName:(NSString *)name
 {
-    NSFileManager *manager = [NSFileManager defaultManager];
     NSURL *fileDocsURL = [self storedDocumentsFilePathWithName:name];
-    if ([manager fileExistsAtPath:fileDocsURL.path]) { return fileDocsURL; }
+    if ([self.fileManager fileExistsAtPath:fileDocsURL.path]) { return fileDocsURL; }
 
-    return [[NSBundle mainBundle] URLForResource:name withExtension:@"json"];
+    NSURL *bundlePath = [NSBundle.mainBundle bundleURL];
+    NSURL *fileAppURL = [bundlePath URLByAppendingPathComponent:[name stringByAppendingString:@".json"]];
+    if ([self.fileManager fileExistsAtPath:fileAppURL.path]) { return fileAppURL; }
+
+    return nil;
 }
 
 - (void)updateWithJSONData:(NSData *)JSONdata
@@ -66,7 +73,7 @@
     _lastUpdatedDate = [formatter dateFromString:lastUpdatedDateString];
     _name = [JSON[@"name"] copy];
 
-    _features = [self mapArray:JSON[@"features"] map:^id(NSDictionary *featureDict) {
+    _features = [self mapDict:JSON[@"features"] map:^id(NSDictionary *featureDict) {
         return [[Feature alloc] initWithName:featureDict[@"name"] state:featureDict[@"value"]];
     }];
 
@@ -74,8 +81,8 @@
         return [[Message alloc] initWithName:messageDict[@"name"] content:messageDict[@"content"]];
     }];
 
-    _routes = [self mapArray:JSON[@"routes"] map:^id(NSDictionary *routeDict) {
-        return [[Route alloc] initWithName:routeDict[@"name"] route:routeDict[@"route"]];
+    _routes = [self mapDict:JSON[@"routes"] map:^id(NSDictionary *routeDict) {
+        return [[Route alloc] initWithName:routeDict[@"name"] path:routeDict[@"path"]];
     }];
 }
 
@@ -85,7 +92,6 @@
     [self performRequest:request completionHandler:^(NSData *data, NSURLResponse *response, NSError *error) {
 
         if (error) {
-            NSLog(@"Check for update failed: %@", error);
             updateCheckCompleted(NO);
             return;
         }
@@ -98,7 +104,6 @@
             NSDate *lastUpdatedDate = [formatter dateFromString:updatedAtString];
 
             BOOL later = ([lastUpdatedDate compare:self.lastUpdatedDate] == NSOrderedDescending);
-            NSLog(@"Check for update (%@). Current settings: %@, new settings: %@", @(later), self.lastUpdatedDate, lastUpdatedDate);
             updateCheckCompleted(later);
             return;
         }
@@ -114,12 +119,10 @@
     [self performRequest:request completionHandler:^(NSData *data, NSURLResponse *response, NSError *error) {
 
         if (error || data == nil) {
-            NSLog(@"Updating Echo data failed: %@, %@", error, data);
             completed(NO, error);
             return;
         }
 
-        NSLog(@"Fetched Echo data.");
         [self updateWithJSONData:data];
         BOOL saved = [self saveJSONToDisk:data];
         completed(saved, nil);
@@ -155,13 +158,33 @@
     return [NSArray arrayWithArray:newArray];
 }
 
+- (NSDictionary *)mapDict:(NSArray *)array map:(id (^)(id object))block {
+    NSMutableDictionary *newDict = [NSMutableDictionary dictionary];
+
+    for (id object in array) {
+        id newObject = block(object);
+        if (newObject) {
+            NSString *key = object[@"name"];
+            newDict[key] = newObject;
+        }
+    }
+
+    return [NSDictionary dictionaryWithDictionary:newDict];
+}
+
 - (void)performRequest:(NSURLRequest *)request completionHandler:(void (^)(NSData *data, NSURLResponse *response, NSError *error))completionHandler;
 {
     NSURLSessionConfiguration *configuration = [NSURLSessionConfiguration defaultSessionConfiguration];
-    configuration.requestCachePolicy = NSURLRequestReloadIgnoringCacheData;
     NSURLSession *session = [NSURLSession sessionWithConfiguration:configuration];
     NSURLSessionDataTask *task = [session dataTaskWithRequest:request completionHandler:completionHandler];
     [task resume];
+}
+
+#pragma mark - DI 
+
+- (NSFileManager *)fileManager
+{
+    return _fileManager ?: [NSFileManager defaultManager];
 }
 
 @end

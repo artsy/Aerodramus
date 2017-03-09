@@ -1,0 +1,15 @@
+machine:
+  xcode:
+    version: "8.2"
+  environment:
+    LANG: en_US.UTF-8
+
+dependencies:
+  pre:
+    - bundle install
+    - pushd Example ; bundle exec pod keys set EchoKey - ; popd
+
+test:
+  override: 
+    - set -o pipefail && xcodebuild test -workspace Example/Aerodramus.xcworkspace -scheme Aerodramus-Example -sdk iphonesimulator ONLY_ACTIVE_ARCH=NO -destination "platform=iOS Simulator,name=iPhone 6s,OS=10.2" | xcpretty -c
+    - bundle exec pod lib lint --allow-warnings

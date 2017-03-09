@@ -1,14 +1,18 @@
 PODS:
-  - Aerodramus (0.1.0):
+  - Aerodramus (0.2.0):
     - ISO8601DateFormatter
-  - Expecta (1.0.0)
+  - Expecta (1.0.5)
+  - Forgeries (0.5.0):
+    - Forgeries/Core (= 0.5.0)
+  - Forgeries/Core (0.5.0)
   - ISO8601DateFormatter (0.7)
   - Keys (1.0.0)
-  - Specta (1.0.2)
+  - Specta (1.0.5)
 
 DEPENDENCIES:
   - Aerodramus (from `../`)
   - Expecta
+  - Forgeries
   - Keys (from `Pods/CocoaPodsKeys`)
   - Specta
 
@@ -19,12 +23,13 @@ EXTERNAL SOURCES:
     :path: Pods/CocoaPodsKeys
 
 SPEC CHECKSUMS:
-  Aerodramus: 407381d6641e32924f59640eb499b410ab6cb15f
-  Expecta: 32604574add2c46a36f8d2f716b6c5736eb75024
+  Aerodramus: 022cfbd2f5332673038b466759ca70b3c8b655c6
+  Expecta: e1c022fcd33910b6be89c291d2775b3fe27a89fe
+  Forgeries: 6b54c6ac2b67b71de65b3243e3a17b4e1545c1fc
   ISO8601DateFormatter: ab926648eebe497f4d167c0fd083992f959f1274
   Keys: 9c35bf00f612ee1d48556f4a4b9b4551e224e90f
-  Specta: 9cec98310dca411f7c7ffd6943552b501622abfe
+  Specta: ac94d110b865115fe60ff2c6d7281053c6f8e8a2
 
-PODFILE CHECKSUM: 2c8ce2c120ca39de38a2a84c653ca1ef43a84213
+PODFILE CHECKSUM: 8301af5295ab35bacc97c22143a52c22c28ffc14
 
 COCOAPODS: 1.2.0
