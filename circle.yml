@@ -4,6 +4,11 @@ machine:
   environment:
     LANG: en_US.UTF-8
 
+dependencies:
+  pre:
+    - bundle install
+    - bundle exec pod keys set EchoKey -
+
 test:
   override: 
     - set -o pipefail && xcodebuild test -workspace Example/Aerodramus.xcworkspace -scheme Aerodramus-Example -sdk iphonesimulator ONLY_ACTIVE_ARCH=NO | xcpretty -c 
