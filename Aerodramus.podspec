@@ -2,7 +2,7 @@ Pod::Spec.new do |s|
   s.name             = "Aerodramus"
   s.version          = "0.1.0"
   s.summary          = "Echo Communication Tools"
-  s.description      = ""
+  s.description      = "Echo Communication Tools"
   s.homepage         = "https://github.com/Artsy/Aerodramus"
   s.license          = 'MIT'
   s.author           = { "Orta Therox" => "orta.therox@gmail.com" }
