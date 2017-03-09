@@ -3,7 +3,13 @@ machine:
     version: "8.2"
   environment:
     LANG: en_US.UTF-8
+
+dependencies:
+  override:
+    - bundle install
+    - bundle exec pod install --project-directory=Example
+
 test:
   override: 
     - set -o pipefail && xcodebuild test -workspace Example/Aerodramus.xcworkspace -scheme Aerodramus-Example -sdk iphonesimulator ONLY_ACTIVE_ARCH=NO | xcpretty -c 
-    - pod lib lint
+    - bundle exec pod lib lint
