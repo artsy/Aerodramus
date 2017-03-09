@@ -7,7 +7,7 @@ machine:
 dependencies:
   pre:
     - bundle install
-    - bundle exec pod keys set EchoKey -
+    - pushd Example ; bundle exec pod keys set EchoKey - ; popd
 
 test:
   override: 
