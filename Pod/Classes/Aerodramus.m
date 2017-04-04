@@ -104,8 +104,15 @@
             NSString *updatedAtString =  httpResponse.allHeaderFields[@"Updated-At"];
             NSDate *lastUpdatedDate = [formatter dateFromString:updatedAtString];
 
-            BOOL later = ([lastUpdatedDate compare:self.lastUpdatedDate] == NSOrderedDescending);
-            NSLog(@"[Aerodramus] Check for update (%@). Current settings: %@, new settings: %@", @(later), self.lastUpdatedDate, lastUpdatedDate);
+            BOOL later;
+            if (lastUpdatedDate) {
+                later = ([lastUpdatedDate compare:self.lastUpdatedDate] == NSOrderedDescending);
+                NSLog(@"[Aerodramus] Check for update (%@). Current settings: %@, new settings: %@", @(later), self.lastUpdatedDate, lastUpdatedDate);
+            } else {
+                // Date parsing failed, force an update.
+                later = YES;
+                NSLog(@"[Aerodramus] Failed to parse date from Updated-At header: %@", updatedAtString);
+            }
             updateCheckCompleted(later);
             return;
         }
