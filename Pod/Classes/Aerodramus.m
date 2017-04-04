@@ -63,7 +63,7 @@
     NSError *error = nil;
     id JSON = [NSJSONSerialization JSONObjectWithData:JSONdata options:0 error:&error];
     if (error) {
-        NSLog(@"Could not serialize Aerodramus JSON: %@", error.localizedDescription);
+        NSLog(@"[Aerodramus] Could not serialize Aerodramus JSON: %@", error.localizedDescription);
         return;
     }
 
@@ -92,7 +92,7 @@
     [self performRequest:request completionHandler:^(NSData *data, NSURLResponse *response, NSError *error) {
 
         if (error) {
-            NSLog(@"Check for update failed: %@", error);
+            NSLog(@"[Aerodramus] Check for update failed: %@", error);
             updateCheckCompleted(NO);
             return;
         }
@@ -105,7 +105,7 @@
             NSDate *lastUpdatedDate = [formatter dateFromString:updatedAtString];
 
             BOOL later = ([lastUpdatedDate compare:self.lastUpdatedDate] == NSOrderedDescending);
-            NSLog(@"Check for update (%@). Current settings: %@, new settings: %@", @(later), self.lastUpdatedDate, lastUpdatedDate);
+            NSLog(@"[Aerodramus] Check for update (%@). Current settings: %@, new settings: %@", @(later), self.lastUpdatedDate, lastUpdatedDate);
             updateCheckCompleted(later);
             return;
         }
@@ -121,12 +121,12 @@
     [self performRequest:request completionHandler:^(NSData *data, NSURLResponse *response, NSError *error) {
 
         if (error || data == nil) {
-            NSLog(@"Updating Echo data failed: %@, %@", error, data);
+            NSLog(@"[Aerodramus] Updating Echo data failed: %@, %@", error, data);
             completed(NO, error);
             return;
         }
 
-        NSLog(@"Fetched Echo data.");
+        NSLog(@"[Aerodramus] Fetched Echo data.");
         [self updateWithJSONData:data];
         BOOL saved = [self saveJSONToDisk:data];
         completed(saved, nil);
@@ -141,7 +141,7 @@
     NSURL *url = [self storedDocumentsFilePathWithName:self.filename];
     BOOL success = [JSONdata writeToURL:url options:NSDataWritingAtomic error:&error];
     if (error) {
-        NSLog(@"Error saving Aerodramus json data: %@", error.localizedDescription);
+        NSLog(@"[Aerodramus] Error saving Aerodramus json data: %@", error.localizedDescription);
     }
     return success;
 }
