@@ -1,5 +1,5 @@
 PODS:
-  - Aerodramus (0.3.0):
+  - Aerodramus (0.3.2):
     - ISO8601DateFormatter
   - Expecta (1.0.5)
   - Forgeries (0.5.0):
@@ -23,7 +23,7 @@ EXTERNAL SOURCES:
     :path: Pods/CocoaPodsKeys
 
 SPEC CHECKSUMS:
-  Aerodramus: 3da1037b299cd79ccdef98d5a1fdbef6ce8220a2
+  Aerodramus: 03b819b51198ca38e13eec09045696efebf1c3d0
   Expecta: e1c022fcd33910b6be89c291d2775b3fe27a89fe
   Forgeries: 6b54c6ac2b67b71de65b3243e3a17b4e1545c1fc
   ISO8601DateFormatter: ab926648eebe497f4d167c0fd083992f959f1274
