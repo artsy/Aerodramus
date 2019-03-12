@@ -54,7 +54,7 @@ NS_ASSUME_NONNULL_BEGIN
 @property (nonatomic, nonnull, copy) NSDictionaryOf(NSString *, Feature *) *features;
 
 /// Collection of messages from the echo server
-@property (nonatomic, nonnull, copy) NSArrayOf(Message *) *messages;
+@property (nonatomic, nonnull, copy) NSDictionaryOf(NSString *, Message *) *messages;
 
 @end
 
