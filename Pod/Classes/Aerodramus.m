@@ -77,7 +77,7 @@
         return [[Feature alloc] initWithName:featureDict[@"name"] state:featureDict[@"value"]];
     }];
 
-    _messages = [self mapArray:JSON[@"messages"] map:^id(NSDictionary *messageDict) {
+    _messages = [self mapDict:JSON[@"messages"] map:^id(NSDictionary *messageDict) {
         return [[Message alloc] initWithName:messageDict[@"name"] content:messageDict[@"content"]];
     }];
 

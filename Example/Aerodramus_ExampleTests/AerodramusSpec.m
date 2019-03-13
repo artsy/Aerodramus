@@ -78,7 +78,7 @@ describe(@"ORM", ^{
         [subject setup];
         expect([subject messages].count).to.equal(1);
 
-        Message *message = subject.messages.firstObject;
+        Message *message = subject.messages.allValues.firstObject;
         expect(message.name).to.equal(@"intro_text");
         expect(message.content).to.equal(@"Artsy has 300,000 artworks");
     });
