@@ -1,3 +1,5 @@
+version: 2.1
+
 machine:
   xcode:
     version: "8.2"
@@ -11,9 +13,15 @@ dependencies:
 
 jobs:
   test:
-    override:
-      - set -o pipefail && xcodebuild test -workspace Example/Aerodramus.xcworkspace -scheme Aerodramus-Example -sdk iphonesimulator ONLY_ACTIVE_ARCH=NO -destination "platform=iOS Simulator,name=iPhone 6s,OS=10.2" | xcpretty -c
-      - bundle exec pod lib lint --allow-warnings
+    macos:
+      xcode: 11.3.0
+    steps:
+      - run:
+          name: build test
+          command: set -o pipefail && xcodebuild test -workspace Example/Aerodramus.xcworkspace -scheme Aerodramus-Example -sdk iphonesimulator ONLY_ACTIVE_ARCH=NO -destination "platform=iOS Simulator,name=iPhone 6s,OS=10.2" | xcpretty -c
+      - run:
+          name: pod lint
+          command: bundle exec pod lib lint --allow-warnings
 
 workflows:
   version: 2
