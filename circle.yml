@@ -5,12 +5,13 @@ jobs:
     macos:
       xcode: 11.3.0
     steps:
+      - checkout
       - run:
          name: bundle install
          command: bundle install
       - run:
          name: pod install
-         command: bundle e pod install
+         command: pushd Exampe; bundle e pod install; popd
       - run:
          name: set echo key
          command: pushd Example; bundle exec pod keys set EchoKey -; popd
