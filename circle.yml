@@ -11,7 +11,7 @@ jobs:
          command: bundle install
       - run:
          name: pod install
-         command: pushd Exampe; bundle e pod install; popd
+         command: pushd Example; bundle e pod install; popd
       - run:
          name: set echo key
          command: pushd Example; bundle exec pod keys set EchoKey -; popd
