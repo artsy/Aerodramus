@@ -9,7 +9,14 @@ dependencies:
     - bundle install
     - pushd Example ; bundle exec pod keys set EchoKey - ; popd
 
-test:
-  override: 
-    - set -o pipefail && xcodebuild test -workspace Example/Aerodramus.xcworkspace -scheme Aerodramus-Example -sdk iphonesimulator ONLY_ACTIVE_ARCH=NO -destination "platform=iOS Simulator,name=iPhone 6s,OS=10.2" | xcpretty -c
-    - bundle exec pod lib lint --allow-warnings
+jobs:
+  test:
+    override:
+      - set -o pipefail && xcodebuild test -workspace Example/Aerodramus.xcworkspace -scheme Aerodramus-Example -sdk iphonesimulator ONLY_ACTIVE_ARCH=NO -destination "platform=iOS Simulator,name=iPhone 6s,OS=10.2" | xcpretty -c
+      - bundle exec pod lib lint --allow-warnings
+
+workflows:
+  version: 2
+  test:
+    jobs:
+      - test
