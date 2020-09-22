@@ -17,7 +17,7 @@ jobs:
          command: pushd Example; bundle e pod install; popd
       - run:
           name: build test
-          command: set -o pipefail && xcodebuild test -workspace Example/Aerodramus.xcworkspace -scheme Aerodramus-Example -sdk iphonesimulator ONLY_ACTIVE_ARCH=NO -destination "platform=iOS Simulator,name=iPhone 6s,OS=10.2" | xcpretty -c
+          command: set -o pipefail && xcodebuild test -workspace Example/Aerodramus.xcworkspace -scheme Aerodramus-Example -sdk iphonesimulator ONLY_ACTIVE_ARCH=NO -destination "platform=iOS Simulator,name=iPhone X,OS=12.4" | xcpretty -c
       - run:
           name: pod lint
           command: bundle exec pod lib lint --allow-warnings
