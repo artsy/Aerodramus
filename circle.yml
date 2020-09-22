@@ -1,15 +1,29 @@
-machine:
-  xcode:
-    version: "8.2"
-  environment:
-    LANG: en_US.UTF-8
+version: 2.1
 
-dependencies:
-  pre:
-    - bundle install
-    - pushd Example ; bundle exec pod keys set EchoKey - ; popd
+jobs:
+  test:
+    macos:
+      xcode: 11.3.0
+    steps:
+      - checkout
+      - run:
+         name: bundle install
+         command: bundle install
+      - run:
+         name: set echo key
+         command: pushd Example; bundle exec pod keys set EchoKey -; popd
+      - run:
+         name: pod install
+         command: pushd Example; bundle e pod install; popd
+      - run:
+          name: build test
+          command: set -o pipefail && xcodebuild test -workspace Example/Aerodramus.xcworkspace -scheme Aerodramus-Example -sdk iphonesimulator ONLY_ACTIVE_ARCH=NO -destination "platform=iOS Simulator,name=iPhone X,OS=12.4" | xcpretty -c
+      - run:
+          name: pod lint
+          command: bundle exec pod lib lint --allow-warnings
 
-test:
-  override: 
-    - set -o pipefail && xcodebuild test -workspace Example/Aerodramus.xcworkspace -scheme Aerodramus-Example -sdk iphonesimulator ONLY_ACTIVE_ARCH=NO -destination "platform=iOS Simulator,name=iPhone 6s,OS=10.2" | xcpretty -c
-    - bundle exec pod lib lint --allow-warnings
+workflows:
+  version: 2
+  test:
+    jobs:
+      - test

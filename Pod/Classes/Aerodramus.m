@@ -99,6 +99,14 @@
 
         if ([response isKindOfClass:NSHTTPURLResponse.class]) {
             NSHTTPURLResponse *httpResponse = (id)response;
+
+            NSInteger statusCode = httpResponse.statusCode;
+            if (statusCode < 200 || statusCode > 299) {
+                NSLog(@"[Aerodramus] Check for update response came back with status code: %ld", (long)statusCode);
+                updateCheckCompleted(NO);
+                return;
+            }
+
             ISO8601DateFormatter *formatter = [[ISO8601DateFormatter alloc] init];
             
             NSString *updatedAtString =  httpResponse.allHeaderFields[@"Updated-At"];
@@ -131,6 +139,21 @@
             NSLog(@"[Aerodramus] Updating Echo data failed: %@, %@", error, data);
             completed(NO, error);
             return;
+        }
+
+        if ([response isKindOfClass:NSHTTPURLResponse.class]) {
+            NSHTTPURLResponse *httpResponse = (id)response;
+
+            NSInteger statusCode = httpResponse.statusCode;
+            if (statusCode < 200 || statusCode > 299) {
+                NSLog(@"[Aerodramus] Updating Echo data response came back with status code: %ld", (long)statusCode);
+                completed(NO, [[NSError alloc] initWithDomain:@"Aerodramus"
+                                                         code:1
+                                                     userInfo:@{
+                                                         @"statusCode": @(statusCode),
+                                                     }]);
+                return;
+            }
         }
 
         NSLog(@"[Aerodramus] Fetched Echo data.");
