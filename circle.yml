@@ -10,11 +10,11 @@ jobs:
          name: bundle install
          command: bundle install
       - run:
-         name: pod install
-         command: pushd Example; bundle e pod install; popd
-      - run:
          name: set echo key
          command: pushd Example; bundle exec pod keys set EchoKey -; popd
+      - run:
+         name: pod install
+         command: pushd Example; bundle e pod install; popd
       - run:
           name: build test
           command: set -o pipefail && xcodebuild test -workspace Example/Aerodramus.xcworkspace -scheme Aerodramus-Example -sdk iphonesimulator ONLY_ACTIVE_ARCH=NO -destination "platform=iOS Simulator,name=iPhone 6s,OS=10.2" | xcpretty -c
