@@ -27,7 +27,7 @@ NS_ASSUME_NONNULL_BEGIN
 /// It will look in the user's document dir for [filename].json
 /// and then fall back to looking inside the App bundle.
 
-- (instancetype)initWithServerURL:(NSURL *)url accountID:(NSInteger)accountID APIKey:(NSString *)APIKey localFilename:(NSString *)filename;
+- (instancetype)initWithServerURL:(NSURL *)url accountID:(NSInteger)accountID localFilename:(NSString *)filename;
 
 /// Grabs the local JSON and sets itself up
 - (void)setup;

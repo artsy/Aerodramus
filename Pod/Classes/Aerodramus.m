@@ -15,7 +15,7 @@
 
 @implementation Aerodramus
 
-- (instancetype)initWithServerURL:(NSURL *)url accountID:(NSInteger)accountID APIKey:(NSString *)APIKey localFilename:(NSString *)filename;
+- (instancetype)initWithServerURL:(NSURL *)url accountID:(NSInteger)accountID localFilename:(NSString *)filename;
 {
     self = [super init];
     if (!self) return nil;
@@ -23,7 +23,7 @@
     _filename = url.copy;
     _filename = filename.copy;
     _accountID = accountID;
-    _router = [[AeroRouter alloc] initWithAPIKey:APIKey baseURL:url];
+    _router = [[AeroRouter alloc] initWithBaseURL:url];
 
     return self;
 }
@@ -107,9 +107,10 @@
                 return;
             }
 
-            ISO8601DateFormatter *formatter = [[ISO8601DateFormatter alloc] init];
+            NSDateFormatter *formatter = [[NSDateFormatter alloc] init];
+            [formatter setDateFormat:@"E, dd MMM yyyy HH:mm:ss zzz"];
             
-            NSString *updatedAtString =  httpResponse.allHeaderFields[@"Updated-At"];
+            NSString *updatedAtString =  httpResponse.allHeaderFields[@"Last-Modified"];
             NSDate *lastUpdatedDate = [formatter dateFromString:updatedAtString];
 
             BOOL later;
