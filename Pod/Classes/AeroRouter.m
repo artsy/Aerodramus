@@ -21,23 +21,20 @@
     return [self.baseURL URLByAppendingPathComponent:path];
 }
 
-- (NSURLRequest *)headLastUpdateRequestForAccountID:(NSInteger)account
+- (NSURLRequest *)headLastUpdateRequest
 {
     NSURL *url = [self urlForPath:[NSString stringWithFormat:@"/Echo.json"]];
     NSMutableURLRequest *request = [NSMutableURLRequest requestWithURL:url];
     request.HTTPMethod = @"HEAD";
-    [request setValue:@"application/vnd.echo-v2+json" forHTTPHeaderField:@"Accept"];
     return request;
 }
 
-- (NSURLRequest *)getFullContentRequestForAccountID:(NSInteger)account
+- (NSURLRequest *)getFullContentRequest
 {
     NSURL *url = [self urlForPath:[NSString stringWithFormat:@"/Echo.json"]];
     NSMutableURLRequest *request = [NSMutableURLRequest requestWithURL:url];
     request.HTTPMethod = @"GET";
-    [request setValue:@"application/vnd.echo-v2+json" forHTTPHeaderField:@"Accept"];
     return request;
 }
-
 
 @end
