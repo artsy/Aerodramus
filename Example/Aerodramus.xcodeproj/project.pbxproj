@@ -307,13 +307,11 @@
 				"${PODS_ROOT}/Target Support Files/Pods-Aerodramus_Example/Pods-Aerodramus_Example-frameworks.sh",
 				"${BUILT_PRODUCTS_DIR}/Aerodramus/Aerodramus.framework",
 				"${BUILT_PRODUCTS_DIR}/ISO8601DateFormatter/ISO8601DateFormatter.framework",
-				"${BUILT_PRODUCTS_DIR}/Keys/Keys.framework",
 			);
 			name = "[CP] Embed Pods Frameworks";
 			outputPaths = (
 				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/Aerodramus.framework",
 				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/ISO8601DateFormatter.framework",
-				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/Keys.framework",
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 			shellPath = /bin/sh;

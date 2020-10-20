@@ -18,8 +18,8 @@ __block Aerodramus *subject;
 describe(@"getting the default file", ^{
 
     before(^{
-        NSURL *url = [NSURL URLWithString:@"http://echo.com"];
-        subject = [[Aerodramus alloc] initWithServerURL:url accountID:1 APIKey:@"KEY" localFilename:@"EchoTest"];
+        NSURL *url = [NSURL URLWithString:@"http://echo.com"]
+        subject = [[Aerodramus alloc] initWithServerURL:url localFilename:@"EchoTest"];
     });
 
     it(@"prioritises looking in user documents", ^{
@@ -52,7 +52,7 @@ describe(@"ORM", ^{
 
     before(^{
         NSURL *url = [NSURL URLWithString:@"http://echo.com"];
-        subject = [[Aerodramus alloc] initWithServerURL:url accountID:1 APIKey:@"KEY" localFilename:@"EchoStubbed"];
+        subject = [[Aerodramus alloc] initWithServerURL:url localFilename:@"EchoStubbed"];
     });
 
     it(@"sets up Aerodramus", ^{

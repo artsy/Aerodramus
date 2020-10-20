@@ -16,7 +16,7 @@
     AerodramusKeys *keys = [[AerodramusKeys alloc] init];
     NSURL *prodURL = [NSURL URLWithString:@"https://echo-api-production.herokuapp.com/"];
 
-    Aerodramus *aero = [[Aerodramus alloc] initWithServerURL:prodURL accountID:1 APIKey:keys.echoKey localFilename:@"Echo"];
+    Aerodramus *aero = [[Aerodramus alloc] initWithServerURL:prodURL localFilename:@"Echo"];
     [aero setup];
     [aero checkForUpdates:^(BOOL updatedDataOnServer) {
         if (!updatedDataOnServer) return;
