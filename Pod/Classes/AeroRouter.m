@@ -23,17 +23,19 @@
 
 - (NSURLRequest *)headLastUpdateRequest
 {
-    NSURL *url = [self urlForPath:[NSString stringWithFormat:@"/Echo.json"]];
+    NSURL *url = [self urlForPath:[NSString stringWithFormat:@"Echo.json"]];
     NSMutableURLRequest *request = [NSMutableURLRequest requestWithURL:url];
     request.HTTPMethod = @"HEAD";
+    NSLog(@"Will request HEAD at %@", request.URL);
     return request;
 }
 
 - (NSURLRequest *)getFullContentRequest
 {
-    NSURL *url = [self urlForPath:[NSString stringWithFormat:@"/Echo.json"]];
+    NSURL *url = [self urlForPath:[NSString stringWithFormat:@"Echo.json"]];
     NSMutableURLRequest *request = [NSMutableURLRequest requestWithURL:url];
     request.HTTPMethod = @"GET";
+    NSLog(@"Will request GET at %@", request.URL);
     return request;
 }
 

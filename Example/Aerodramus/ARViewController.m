@@ -12,9 +12,9 @@
 {
     [super viewDidLoad];
 
-    NSURL *prodURL = [NSURL URLWithString:@"https://echo-api-production.herokuapp.com/"];
+    NSURL *uRL = [NSURL URLWithString:@"https://echo.artsy.net"];
 
-    Aerodramus *aero = [[Aerodramus alloc] initWithServerURL:prodURL localFilename:@"Echo"];
+    Aerodramus *aero = [[Aerodramus alloc] initWithServerURL:uRL localFilename:@"Echo"];
     [aero setup];
     [aero checkForUpdates:^(BOOL updatedDataOnServer) {
         if (!updatedDataOnServer) return;
