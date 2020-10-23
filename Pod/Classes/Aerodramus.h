@@ -18,8 +18,6 @@ NS_ASSUME_NONNULL_BEGIN
 @class Route, Feature, Message;
 
 /// A class to communicate with the Artsy Echo API
-/// @see Web Interface: https://echo-web-production.herokuapp.com/
-/// @see Heroku Settings URL: https://dashboard.heroku.com/apps/echo-web-production/settings
 
 @interface Aerodramus : NSObject
 
@@ -27,7 +25,7 @@ NS_ASSUME_NONNULL_BEGIN
 /// It will look in the user's document dir for [filename].json
 /// and then fall back to looking inside the App bundle.
 
-- (instancetype)initWithServerURL:(NSURL *)url accountID:(NSInteger)accountID APIKey:(NSString *)APIKey localFilename:(NSString *)filename;
+- (instancetype)initWithServerURL:(NSURL *)url localFilename:(NSString *)filename;
 
 /// Grabs the local JSON and sets itself up
 - (void)setup;
@@ -40,9 +38,6 @@ NS_ASSUME_NONNULL_BEGIN
 
 /// The Echo account name for this app
 @property (nonatomic, nonnull, copy) NSString *name;
-
-/// The Echo account ID for this app
-@property (nonatomic, assign) NSInteger accountID;
 
 /// The time when this instance of Aerodramus was last updated
 @property (nonatomic, nonnull, strong) NSDate *lastUpdatedDate;

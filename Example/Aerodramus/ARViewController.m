@@ -1,5 +1,4 @@
 @import Aerodramus;
-@import Keys;
 
 #import "ARViewController.h"
 
@@ -13,10 +12,9 @@
 {
     [super viewDidLoad];
 
-    AerodramusKeys *keys = [[AerodramusKeys alloc] init];
-    NSURL *prodURL = [NSURL URLWithString:@"https://echo-api-production.herokuapp.com/"];
+    NSURL *uRL = [NSURL URLWithString:@"https://echo.artsy.net"];
 
-    Aerodramus *aero = [[Aerodramus alloc] initWithServerURL:prodURL accountID:1 APIKey:keys.echoKey localFilename:@"Echo"];
+    Aerodramus *aero = [[Aerodramus alloc] initWithServerURL:uRL localFilename:@"Echo"];
     [aero setup];
     [aero checkForUpdates:^(BOOL updatedDataOnServer) {
         if (!updatedDataOnServer) return;

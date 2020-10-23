@@ -15,15 +15,14 @@
 
 @implementation Aerodramus
 
-- (instancetype)initWithServerURL:(NSURL *)url accountID:(NSInteger)accountID APIKey:(NSString *)APIKey localFilename:(NSString *)filename;
+- (instancetype)initWithServerURL:(NSURL *)url localFilename:(NSString *)filename;
 {
     self = [super init];
     if (!self) return nil;
 
     _filename = url.copy;
     _filename = filename.copy;
-    _accountID = accountID;
-    _router = [[AeroRouter alloc] initWithAPIKey:APIKey baseURL:url];
+    _router = [[AeroRouter alloc] initWithBaseURL:url];
 
     return self;
 }
@@ -88,7 +87,7 @@
 
 - (void)checkForUpdates:(void (^)(BOOL updatedDataOnServer))updateCheckCompleted
 {
-    NSURLRequest *request = [self.router headLastUpdateRequestForAccountID:self.accountID];
+    NSURLRequest *request = [self.router headLastUpdateRequest];
     [self performRequest:request completionHandler:^(NSData *data, NSURLResponse *response, NSError *error) {
 
         if (error) {
@@ -107,9 +106,10 @@
                 return;
             }
 
-            ISO8601DateFormatter *formatter = [[ISO8601DateFormatter alloc] init];
+            NSDateFormatter *formatter = [[NSDateFormatter alloc] init];
+            [formatter setDateFormat:@"E, dd MMM yyyy HH:mm:ss zzz"];
             
-            NSString *updatedAtString =  httpResponse.allHeaderFields[@"Updated-At"];
+            NSString *updatedAtString =  httpResponse.allHeaderFields[@"Last-Modified"];
             NSDate *lastUpdatedDate = [formatter dateFromString:updatedAtString];
 
             BOOL later;
@@ -132,7 +132,7 @@
 
 - (void)update:(void (^)(BOOL updated, NSError *error))completed;
 {
-    NSURLRequest *request = [self.router getFullContentRequestForAccountID:self.accountID];
+    NSURLRequest *request = [self.router getFullContentRequest];
     [self performRequest:request completionHandler:^(NSData *data, NSURLResponse *response, NSError *error) {
 
         if (error || data == nil) {

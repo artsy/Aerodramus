@@ -19,7 +19,7 @@ describe(@"getting the default file", ^{
 
     before(^{
         NSURL *url = [NSURL URLWithString:@"http://echo.com"];
-        subject = [[Aerodramus alloc] initWithServerURL:url accountID:1 APIKey:@"KEY" localFilename:@"EchoTest"];
+        subject = [[Aerodramus alloc] initWithServerURL:url localFilename:@"EchoTest"];
     });
 
     it(@"prioritises looking in user documents", ^{
@@ -52,13 +52,12 @@ describe(@"ORM", ^{
 
     before(^{
         NSURL *url = [NSURL URLWithString:@"http://echo.com"];
-        subject = [[Aerodramus alloc] initWithServerURL:url accountID:1 APIKey:@"KEY" localFilename:@"EchoStubbed"];
+        subject = [[Aerodramus alloc] initWithServerURL:url localFilename:@"EchoStubbed"];
     });
 
     it(@"sets up Aerodramus", ^{
         [subject setup];
         expect(subject.name).to.equal(@"eigen");
-        expect(subject.accountID).to.equal(1);
 
         ISO8601DateFormatter *formatter = [[ISO8601DateFormatter alloc] init];
         NSDate *date = [formatter dateFromString:@"2016-01-21T13:50:16.982Z"];
